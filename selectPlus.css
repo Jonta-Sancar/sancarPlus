@@ -1,0 +1,91 @@
+.select-sup-container *{
+	box-sizing: border-box;
+}
+.select-sup-container{
+	position: relative;
+	width: 100%;
+	height: 30px;
+}
+.select-container{
+	background-color: #fff;
+	padding: 2px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	width: 100%;
+	max-width: 500px;
+  	border-radius: 5px;
+}
+.select-content{
+	background-color: #fff;
+	position: relative;
+}
+div.select-search{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 5px 10px;
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+div.select-search-selecteds{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+span.select-search{
+	margin: 3px;
+	background-color: #ddd;
+	padding: 3px 5px;
+	position: relative;
+
+	border-radius: 5px;
+}
+.select-search-cancel{
+	padding-right: 3px;
+	padding-left: 15px;
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	right: -100%;
+	border-radius: 5px;
+
+	cursor: pointer;
+	
+	display: none;
+}
+span.select-search:hover .select-search-cancel{
+	display: block;
+	background-image: linear-gradient(to left, #ddd, #ddd8);
+	right: 0;
+}
+input.select-search{
+	padding: s5px;
+    border: none;
+    outline: none;
+}
+.select-content{
+}
+.select-list{
+	padding: 0 10px;
+	list-style: none;
+}
+.select-option{
+	margin: 0;
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.select-option:hover{
+	background-color: #ddd;
+}
+[data-focus="on"]{
+	outline: 2px solid #000;
+}

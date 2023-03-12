@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="./selectPlus.css">
+	<title>selectPlus</title>
+
+	<style type="text/css">
+		*{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		body, html{
+			padding: 0;
+			margin: 0;
+		}
+		.form-place{
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
+		.buttons{
+			margin: 30px auto;
+			text-align: center;
+		}
+		.btn{
+	    padding: 10px 15px;
+	    background-color: #ddd;
+	    border-radius: 10px;
+	    color: #000;
+	    text-decoration: none;
+		}
+		.btn:hover{
+			background-color: #aaa;
+		}
+	</style>
+
+</head>
+<body>
+
+	<form action="" method="post" style="padding: 10px;">
+		<div class="form-place">
+			<label>Cores:</label>
+			<select class="select-select" name="cores" id="cores">
+							<option class="fixed" value="1">Vermelho</option>
+							<option class="fixed" value="2">Verde</option>
+							<option class="fixed" value="3">Marron</option>
+							<option class="fixed" value="4">Azul</option>
+							<option class="fixed" value="5">Amarelo</option>
+			</select>
+		</div>
+
+		<div class="form-place">
+			<label>Biomas:</label>
+			<select class="select-select add-option" name="biomas" id="biomas">
+							<option class="fixed" value="1">Cerrado</option>
+							<option class="fixed" value="2">Catinga</option>
+							<option class="fixed" value="3">Mata Atlântica</option>
+							<option class="fixed" value="4">Mata Amazônica</option>
+							<option class="fixed" value="5">Pântano</option>
+			</select>
+		</div>
+
+		<hr>
+
+		<div class="form-place">
+			<label>Estados:</label>
+			<select class="select-select multiple" name="ops[]" multiple id="ops">
+							<option class="fixed" value="1">São Paulo</option>
+							<option class="fixed" value="2">Rio de Janeiro</option>
+							<option value="3">Bahia</option>
+							<option value="4">Amazonas</option>
+							<option value="5">Goiás</option>
+			</select>
+		</div>
+
+		<div class="form-place">
+			<label>Cidades:</label>
+			<select class="select-select add-option multiple" multiple name="cidades[]" id="cidades">
+							<option class="fixed" value="1">São Paulo</option>
+							<option class="fixed" value="2">Rio de Janeiro</option>
+							<option class="fixed" value="3">Salvador</option>
+							<option class="fixed" value="4">Manaus</option>
+							<option class="fixed" value="5">Goiania</option>
+			</select>
+		</div>
+
+	</form>
+
+	<div class="buttons" style="padding: 10px;">
+		
+		<a class="btn" download href="./selectPlus.css">selectPlus.css</a>
+		<a class="btn" download href="./selectPlus.js">selectPlus.js</a>
+
+	</div>
+
+	<section style="padding: 10px;font-size:1.3em;">
+		<ul style="text-align:justify; max-width: 800px;">
+			<li style="margin-bottom:5px;"><strong>.select-select</strong>: esta classe indica o select a ser utilizado / manipulado.</li>
+
+			<li style="margin-bottom:5px;"><strong>.add-option</strong>: esta classe indica o select que pode receber a adição de um valor (Obs: o valor do option é o valor do input em url encoded - encodeURI)</li>
+
+			<li style="margin-bottom:5px;"><strong>.multiple</strong>: indica o select que recebe múltiplos valores. Deve ser utilizado em conjunto com o parâmetro multiple e o sufixo "[]" ao fim do name do select (name="optoins[]").</li>
+
+			<li style="margin-bottom:5px;"><strong>.fixed</strong>: esta classe indica as opções que ficarão vizíveis quando o valor do input está vazio. As opções que não receberem esta classe serão vizíveis apenas quando parte do seu nome for inserida no input de pesquisa.</li>
+		</ul>
+
+		<small>Observe o funcionamento dos selects acima.</small>
+	</section>
+
+	<footer style="padding: 10px 0;text-align: center; border: 1px solid #000;border-left: none;border-right: none;">
+		<span>&copy; selectPlus | Um desenvolvimento <a style="color:black;" href="https://jonta-sancar.vercel.app/pt"><em>Jonta Sancar</em></a></span>
+	</footer>
+
+	<script src="./selectPlus.js"></script>
+
+</body>
+</html>
