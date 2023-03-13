@@ -68,7 +68,8 @@ span.select-search:hover .select-search-cancel{
 	right: 0;
 }
 input.select-search{
-	padding: s5px;
+    display: block;
+    padding: 5px;
     border: none;
     outline: none;
 }
