@@ -1,9 +1,10 @@
 # selectPlus
 Opções de melhor apresentação para os selects
-<div class="buttons" style="padding: 10px;">
-  <a class="btn" download href="./selectPlus.css">selectPlus.css</a>
-  <a class="btn" download href="./selectPlus.js">selectPlus.js</a>
-</div>
+<a href="https://jonta-sancar.github.io/selectPlus/">acessar</a>
+<ul class="buttons" style="padding: 10px;">
+  <li><a class="btn" download="selectPlus.css" href="./selectPlus.css">selectPlus.css</a></li>
+  <li><a class="btn" download="selectPlus.js" href="./selectPlus.js">selectPlus.js</a></li>
+</ul>
 <section style="padding: 10px;font-size:1.3em;">
   <ul style="text-align:justify; max-width: 800px;">
     <li style="margin-bottom:5px;"><strong>.select-select</strong>: esta classe indica o select a ser utilizado / manipulado.</li>
