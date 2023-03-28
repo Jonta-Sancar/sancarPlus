@@ -74,6 +74,7 @@ function firstHandler(){
 		if (container_options.classList.contains("options")) {
 			const container = container_options.parentElement;
 			container.style.width = `${container.clientWidth}px`;
+			container.dataset.width = container.clientWidth;
 			container_options.style.height = '0px';
 			container_options.style.position = 'absolute';
 		}
@@ -83,8 +84,10 @@ function firstHandler(){
 function makeSelect(select, order){
 	const select_id    = select.id;
 	
-	let   is_multiple  = 'false';
+	let select_search_selected = "select-search-selected";
+	let is_multiple  = 'false';
 	if (select.classList.contains('multiple')) {
+		select_search_selected = "select-search-selecteds";
 		is_multiple = 'true';
 	}
 
@@ -115,9 +118,9 @@ function makeSelect(select, order){
 		<div class="select-container">
 			<div class="select-content">
 				<div class="select-search" onclick="focusIn(this, 'input-search-${order}')" data-add_option="${add_option}" id="div-search-${order}">
-					<div  class="select-search-selecteds">
+					<div  class="${select_search_selected}">
 					</div>
-					<span class="arrow-down-selectPlus"></span>
+					<div class="select-arrow-down-container"><span class="select-arrow-down"></span></div>
 				</div>
 			</div>
 			<div class="select-content options">
@@ -173,7 +176,7 @@ function focus(input, to_id, status) {
 	// }
 
 	const div_search = (div_container.children[0]).children[0];
-	const arrow = div_search.children[1];
+	const arrow = div_search.children[1].children[0];
 	
 	const ul = options.children[0];
 	const options_list = ul.children;
@@ -258,6 +261,11 @@ function deleteOption(input, e) {
 					div_search.style.height = '100%';
 					content.style.height    = '100%';
 					container.style.height  = '100%';
+				}
+
+				const container_width = container.clientWidth;
+				if(container_width < container.dataset.width){
+					container.style.width  = `${container.dataset.width}px`;
 				}
 
 			}	
@@ -357,9 +365,16 @@ function changeOptionState(option) {
 	<option id="op-${order}" value="${value}" selected>${Inner}</option>
 	`;
 
-	const option_view = `
+	let option_view = `
 	<span data-to_id="op-${order}" data-is_added="${is_added}" data-is_fixed="${is_fixed}" data-option_value="${value}" data-option_inner="${Inner}" class="select-search">${Inner}<div class="select-search-cancel" onclick="deleteOption(document.getElementById('${input.id}'), ['delete', this.parentElement])">X</div></span>
 	`;
+	
+	if (is_multiple == 'false') {
+	
+		option_view = `
+		<span data-to_id="op-${order}" data-is_added="${is_added}" data-is_fixed="${is_fixed}" data-option_value="${value}" data-option_inner="${Inner}" class="select-search-selected">${Inner}</span>
+		`;
+	}
 
 	if (option.classList.contains('add')) {
 
@@ -392,11 +407,10 @@ function changeOptionState(option) {
 	container.style.height      = 'fit-content';
 	sup_container.style.height  = 'fit-content';
 	
-	const container_old_width    = container.clientWidth;
 	container.style.width        = 'fit-content';
 	const container_actual_width = container.clientWidth;
 
-	if(container_actual_width < container_old_width){
-		container.style.width = `${container_old_width}px`;
+	if(container_actual_width < container.dataset.width){
+		container.style.width = `${container.dataset.width}px`;
 	}
 }
