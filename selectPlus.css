@@ -1,0 +1,113 @@
+.select-sup-container *{
+	box-sizing: border-box;
+}
+.select-sup-container{
+	display: inline-block;
+	position: relative;
+	height: 30px;
+	width: fit-content;
+}
+.select-container{
+	background-color: #fff;
+
+	position: relative;
+	top: 0px;
+	left: 0px;
+	
+	height: 100%;
+	width: 100%;
+	max-width: 500px;
+  	border-radius: 5px;
+}
+.select-content{
+	background-color: #fff;
+	position: relative;
+
+	overflow: hidden;
+	height: 100%;
+	border-radius: 5px;
+}
+.options{
+	padding: 5px;
+	border-radius: 0px 0px 5px 5px;
+
+	display: flex;
+	width: fit-content;
+	flex-direction: column;
+}
+div.select-search{
+	border: 1px solid #000;
+	border-radius: 5px;
+	overflow: hidden;
+	height: 100%;
+}
+div.select-search-selecteds{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+span.select-search{
+	margin: 3px;
+	background-color: #ddd;
+	padding: 3px 5px;
+	position: relative;
+
+	border-radius: 5px;
+}
+.select-search-cancel{
+	padding-right: 3px;
+	padding-left: 15px;
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	right: -100%;
+	border-radius: 5px;
+
+	cursor: pointer;
+	
+	display: none;
+}
+span.select-search:hover .select-search-cancel{
+	display: block;
+	background-image: linear-gradient(to left, #ddd, #ddd8);
+	right: 0;
+}
+.arrow-down-selectPlus{
+	border: 5px solid #0000;
+	border-top:  5px solid #000;
+	border-bottom:  none;
+    
+	position: absolute;
+	transform: translateY(-50%);
+    top: 50%;
+    right: 8px;
+}
+input.select-search{
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    outline: none;
+	border-radius: 5px;
+}
+input.select-search:focus{
+	outline: 1px solid;
+}
+.select-list{
+	padding: 0;
+	margin: 5px 0;
+	list-style: none;
+}
+.select-option{
+	margin: 0;
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.select-option:hover{
+	background-color: #ddd;
+}
+[data-focus="on"]{
+	outline: 2px solid #000;
+}
