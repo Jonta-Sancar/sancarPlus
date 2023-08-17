@@ -76,7 +76,6 @@ function firstHandler(){
 			container.style.width = `${container.clientWidth}px`;
 			container.dataset.width = container.clientWidth;
 			container_options.style.height = '0px';
-			container_options.style.position = 'absolute';
 
 			container.style.width = 'fit-content';
 			if(container.clientWidth > container.dataset.width){
