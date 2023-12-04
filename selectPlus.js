@@ -312,6 +312,8 @@ function showMatches(input) {
 	const div_search = document.getElementById(to_id);
 	const options    = options_list.children;
 
+	options_list.style = '';
+
 	let exists_option = false;
 
 	if (value != '') {
@@ -328,7 +330,7 @@ function showMatches(input) {
 				option.style.display        = 'list-item';
 				option.innerHTML            = "<strong>Add: </strong>"+original_value;
 				
-				const new_option_value      = encodeURI(original_value);
+				const new_option_value      = original_value;
 				option.dataset.option_value = new_option_value;
 
 			} else {
@@ -348,7 +350,7 @@ function showMatches(input) {
 				option.style.display        = 'list-item';
 				option.innerHTML            = "<strong>Add: </strong>"+original_value;
 				
-				const new_option_value      = encodeURI(original_value);
+				const new_option_value      = original_value;
 				option.dataset.option_value = new_option_value;
 
 			} else {
