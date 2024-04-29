@@ -55,9 +55,6 @@ function firstHandler(){
 	const inputs = document.querySelectorAll('input.select-search');
 	for(let input of inputs) {
 		const to_id = input.dataset.to_id;
-		// input.addEventListener("focusin", ()=>{
-		// 	focus(input, to_id, "on");
-		// });
 		input.addEventListener("focusout", ()=>{
 			setTimeout(()=>{
 
