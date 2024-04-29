@@ -197,11 +197,6 @@ function focus(input, to_id, status) {
 
 	div_container.style.top = '0px';
 
-	// if (positionY > max_height) {
-		
-	// 	options.style.flexDirection = 'column-reverse';
-	// }
-
 	const div_search = (div_container.children[0]).children[0];
 	const arrow = div_search.children[1].children[0];
 	
