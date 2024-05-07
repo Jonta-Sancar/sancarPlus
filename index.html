@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
+	<!-- <link rel="stylesheet" type="text/css" href="./selectPlus.css"> -->
 	<link rel="stylesheet" type="text/css" href="./selectPlus.css">
 	<title>selectPlus</title>
 
@@ -17,6 +18,9 @@
 		.form-place{
 			margin-top: 5px;
 			margin-bottom: 10px;
+			display: flex;
+			flex-direction: column;
+			gap: 3px;
 		}
 		.buttons{
 			margin: 30px auto;
@@ -28,6 +32,7 @@
 	    border-radius: 10px;
 	    color: #000;
 	    text-decoration: none;
+			transition: .3s;
 		}
 		.btn:hover{
 			background-color: #aaa;
@@ -40,7 +45,7 @@
 	<form action="" method="post" style="padding: 10px;">
 		<div class="form-place">
 			<label>Cores:</label>
-			<select class="select-select" name="cores" id="cores">
+			<select class="select-select focus" name="cores" id="cores">
 							<option class="fixed" value="1">Vermelho</option>
 							<option class="fixed" value="2">Verde</option>
 							<option class="fixed" value="3">Marron</option>
@@ -67,7 +72,7 @@
 			<select class="select-select multiple" name="ops[]" multiple id="ops">
 							<option class="fixed" value="1">São Paulo</option>
 							<option class="fixed" value="2">Rio de Janeiro</option>
-							<option value="3">Bahia</option>
+							<option class="" value="3">Bahia</option>
 							<option value="4">Amazonas</option>
 							<option value="5">Goiás</option>
 			</select>
@@ -102,6 +107,8 @@
 			<li style="margin-bottom:5px;"><strong>.multiple</strong>: indica o select que recebe múltiplos valores. Deve ser utilizado em conjunto com o parâmetro multiple e o sufixo "[]" ao fim do name do select (name="optoins[]").</li>
 
 			<li style="margin-bottom:5px;"><strong>.fixed</strong>: esta classe indica as opções que ficarão vizíveis quando o valor do input está vazio. As opções que não receberem esta classe serão vizíveis apenas quando parte do seu nome for inserida no input de pesquisa.</li>
+
+			<li style="margin-bottom:5px;"><strong>.nowrap</strong>: esta classe indica as opções que ficarão vizíveis quando o valor do input está vazio. As opções que não receberem esta classe serão vizíveis apenas quando parte do seu nome for inserida no input de pesquisa.</li>
 		</ul>
 
 		<small>Observe o funcionamento dos selects acima.</small>
