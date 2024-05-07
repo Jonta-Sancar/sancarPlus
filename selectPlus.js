@@ -10,7 +10,7 @@ function applyStructure(){
 
     const selectPlus_container = returnsGeneralSelectContainer(select);
 
-    parent.innerHTML = selectPlus_container;
+    parent.innerHTML += selectPlus_container;
     applySelectedOptions(select.id);
   }
 }
@@ -68,6 +68,10 @@ function returnsGeneralSelectContainerHTML(select, options){
     select_classes[i] = "";
   }
 
+  if(select.multiple){
+    select_classes.push('multiple');
+  }
+
   const selectPlus = `
     <div class="select-plus ${select_classes.join(' ')}" data-to="${select.id}" onclick="changeVisibility(this, 'origin')" data-delay="true">
       <div class="selected-options"></div>
@@ -81,6 +85,8 @@ function returnsGeneralSelectContainerHTML(select, options){
       </div>
     </div>
   `;
+
+  select.innerHTML = '';
 
   return selectPlus;
 }
@@ -99,13 +105,31 @@ function returnsSelectOptionsHTML(options){
   return options_HTML;
 }
 
+function returnsRealSelectOptionsHTML(option){
+  const option_classes = returnsClasses(option);
+  const value = option.dataset.value;
+  const text  = option.innerText;
+
+  const option_HTML = `
+    <option class="${option_classes.join(' ')}" value="${value}" selected>${text}</option>
+  `;
+  
+  return option_HTML;
+}
+
 function applySelectedOptions(id_select){
+  const select = document.querySelector(`#${id_select}`);
+  select.innerHTML = '';
+
   const selected_options_div = document.querySelector(`[data-to="${id_select}"] .selected-options`);
   const selected_options = document.querySelectorAll(`[data-to="${id_select}"] .select-options.selected`);
 
   let selected_options_arr = [];
   for(let selected_option of selected_options){
     selected_options_arr.push(selected_option.innerText);
+
+    const real_option = returnsRealSelectOptionsHTML(selected_option);
+    select.innerHTML += real_option;
   }
   let selected_options_txt = selected_options_arr.join(', ');
   
@@ -170,6 +194,14 @@ function resetOptions(options){
 function selectOption(option){
   const selectPlus = option.parentElement.parentElement.parentElement;
   
+  if(!selectPlus.classList.contains('multiple')){
+    const selected_options = document.querySelectorAll(`.select-plus[data-to="${selectPlus.dataset.to}"] .select-options.selected`);
+
+    for(let selected_option of selected_options){
+      selected_option.classList.remove('selected');
+    }
+  }
+
   if(option.classList.contains('selected')){
     option.classList.remove('selected');
   } else {
