@@ -106,18 +106,27 @@ select.select-select{
 	display: block !important;
 }
 .select-options.selected::after{
-	content: 'OK';
-	background-color: #fff;
-	padding: .25em;
-	padding-right: .5em;
-
-	position: absolute;
-	transform: translateY(-50%);
-	top: 50%;
-	right: 0px;
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    transform: translateY(-50%) rotate(317deg);
+    border: 0px solid #000;
+    border-left: 3px solid;
+    border-bottom: 3px solid;
+    display: block;
+    height: 5px;
+    width: 10px;
+    z-index: 10;
 }
-.select-options.selected:hover::after{
-	background-color: #0003;
+.select-options.selected::before{
+    background-color: #fff8;
+    width: 30px;
+    height: 100%;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 .select-options.hide{
 	display: none !important;
