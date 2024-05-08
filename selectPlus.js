@@ -123,43 +123,49 @@ function applySelectedOptions(id_select){
 
   const selected_options_div = document.querySelector(`[data-to="${id_select}"] .selected-options`);
   const selected_options = document.querySelectorAll(`[data-to="${id_select}"] .select-options.selected`);
-
+  const search_input     = document.querySelector(`[data-to="${id_select}"].focus .select-options-container > input`);
+  
   let selected_options_arr = [];
   for(let selected_option of selected_options){
     selected_options_arr.push(selected_option.innerText);
-
+    
     const real_option = returnsRealSelectOptionsHTML(selected_option);
     select.innerHTML += real_option;
   }
   let selected_options_txt = selected_options_arr.join(', ');
   
   selected_options_div.innerHTML = selected_options_txt;
+  
+  if(search_input){
+    search_input.focus();
+  }
 }
 
 // after applyed
 function changeVisibility(selectPlus, origin){
-  const input   = selectPlus.children[1].children[0];
-  const options = selectPlus.children[1].children[1].children;
-
-  input.value = '';
   setTimeout(()=>{
+    console.log("changeVisibility");
+    const input   = selectPlus.children[1].children[0];
+    const options = selectPlus.children[1].children[1].children;
+  
+    input.value = '';
     resetOptions(options);
-  }, 100);
 
-  if(origin && !selectPlus.classList.contains('focus') && selectPlus.dataset.delay == 'true'){
-    selectPlus.classList.add('focus');
-    selectPlus.dataset.delay = true;
-    input.focus();
-  } else if(selectPlus.classList.contains('focus')) {
-    setTimeout(()=>{
+    if(!origin){
+      console.log(selectPlus.classList.contains('focus'))
+      
+      console.log(selectPlus.dataset.delay);
+    }
+  
+    if(origin && !selectPlus.classList.contains('focus') && selectPlus.dataset.delay == 'true'){
+      selectPlus.classList.add('focus');
+      selectPlus.dataset.delay = true;
+      input.focus();
+    } else if(selectPlus.classList.contains('focus') && selectPlus.dataset.delay == 'true') {
       selectPlus.classList.remove('focus');
-      selectPlus.dataset.delay = false;
-
-      setTimeout(()=>{
-        selectPlus.dataset.delay = true;
-      },200);
-    }, 100);
-  }
+      delay(selectPlus);
+    }
+  }, 200);
 }
 
 function searchOptions(input){
@@ -192,6 +198,7 @@ function resetOptions(options){
 }
 
 function selectOption(option){
+  console.log('selectOption');
   const selectPlus = option.parentElement.parentElement.parentElement;
   
   if(!selectPlus.classList.contains('multiple')){
@@ -209,4 +216,13 @@ function selectOption(option){
   }
 
   applySelectedOptions(selectPlus.dataset.to);
+  delay(selectPlus);
+}
+
+function delay(selectPlus){
+  selectPlus.dataset.delay = false;
+  
+  setTimeout(()=>{
+    selectPlus.dataset.delay = true;
+  },300);
 }
