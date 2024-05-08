@@ -19,6 +19,16 @@ select.select-select{
 	position: relative;
 	overflow: hidden;
 }
+.select-plus::before{
+	content: '';
+    background-color: #fff8;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 11;
+    width: 30px;
+    height: 100%;
+}
 .select-plus::after{
 	content: '';
 	border: 6px solid transparent;
@@ -29,7 +39,7 @@ select.select-select{
 	transform: translateY(-50%);
 	top: 50%;
 	right: 10px;
-	z-index: 10;
+	z-index: 11;
 }
 .select-plus.focus{
 	z-index: 100;
@@ -41,6 +51,7 @@ select.select-select{
 }
 
 .selected-options{
+	white-space: nowrap;
 	padding: .25em;
 	background-color: #fff;
 	height: 1.5em;
@@ -120,6 +131,7 @@ select.select-select{
     z-index: 10;
 }
 .select-options.selected::before{
+	content: '';
     background-color: #fff8;
     width: 30px;
     height: 100%;
