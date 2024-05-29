@@ -1,6 +1,4 @@
-onload = ()=>{
-  applyStructure();
-}
+onload_functions.push(applyStructure);
 
 function applyStructure(){
   const selects = document.querySelectorAll('.select-select');
@@ -74,13 +72,17 @@ function returnsGeneralSelectContainerHTML(select, options){
 
   const selectPlus = `
     <div class="select-plus ${select_classes.join(' ')}" data-to="${select.id}" onclick="changeVisibility(this, 'origin')" data-delay="true">
-      <div class="selected-options"></div>
+      <div class="select-plus-bg" onclick="changeVisibility(this.parentElement)"></div>
+      
+      <div class="select-plus-content">
+        <div class="selected-options"></div>
 
-      <div class="select-options-container">
-        <input type="search" oninput="searchOptions(this)" onblur="changeVisibility(this.parentElement.parentElement)">
+        <div class="select-options-container">
+          <input type="search" oninput="searchOptions(this)">
 
-        <div class="select-options-list">
-          ${returnsSelectOptionsHTML(options)}
+          <div class="select-options-list">
+            ${returnsSelectOptionsHTML(options)}
+          </div>
         </div>
       </div>
     </div>
@@ -124,7 +126,7 @@ function applySelectedOptions(id_select){
   const selected_options_div = document.querySelector(`[data-to="${id_select}"] .selected-options`);
   const selected_options = document.querySelectorAll(`[data-to="${id_select}"] .select-options.selected`);
   const search_input     = document.querySelector(`[data-to="${id_select}"].focus .select-options-container > input`);
-  
+
   let selected_options_arr = [];
   for(let selected_option of selected_options){
     selected_options_arr.push(selected_option.innerText);
@@ -144,18 +146,12 @@ function applySelectedOptions(id_select){
 // after applyed
 function changeVisibility(selectPlus, origin){
   setTimeout(()=>{
-    console.log("changeVisibility");
-    const input   = selectPlus.children[1].children[0];
-    const options = selectPlus.children[1].children[1].children;
+    const data_to = selectPlus.dataset.to;
+    let input = document.querySelector(`[data-to="${data_to}"] .select-options-container > input`);
+    let options = document.querySelector(`[data-to="${data_to}"] .select-options-container > .select-options-list`).children;
   
     input.value = '';
     resetOptions(options);
-
-    if(!origin){
-      console.log(selectPlus.classList.contains('focus'))
-      
-      console.log(selectPlus.dataset.delay);
-    }
   
     if(origin && !selectPlus.classList.contains('focus') && selectPlus.dataset.delay == 'true'){
       selectPlus.classList.add('focus');
@@ -198,8 +194,7 @@ function resetOptions(options){
 }
 
 function selectOption(option){
-  console.log('selectOption');
-  const selectPlus = option.parentElement.parentElement.parentElement;
+  const selectPlus = option.parentElement.parentElement.parentElement.parentElement;
   
   if(!selectPlus.classList.contains('multiple')){
     const selected_options = document.querySelectorAll(`.select-plus[data-to="${selectPlus.dataset.to}"] .select-options.selected`);

@@ -1,14 +1,22 @@
 select.select-select{
 	display: none;
 }
+.select-plus{
+	position: static;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	outline: none;
+}
 
-.select-plus, .select-plus * {
+.select-plus-content, .select-plus-content * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
 }
 
-.select-plus{
+.select-plus-content{
 	height: fit-content;
 
 	font-size: 1em;
@@ -19,7 +27,7 @@ select.select-select{
 	position: relative;
 	overflow: hidden;
 }
-.select-plus::before{
+.select-plus-content::before{
 	content: '';
     background-color: #fff8;
     position: absolute;
@@ -29,7 +37,7 @@ select.select-select{
     width: 30px;
     height: 100%;
 }
-.select-plus::after{
+.select-plus-content::after{
 	content: '';
 	border: 6px solid transparent;
 	border-top: 8px solid #000;
@@ -41,13 +49,24 @@ select.select-select{
 	right: 10px;
 	z-index: 11;
 }
-.select-plus.focus{
+.focus .select-plus-content{
 	z-index: 100;
 	overflow: visible;
 }
-.select-plus.focus::after{
+.focus .select-plus-content::after{
 	border-top: 0px solid;
 	border-bottom: 8px solid #000;
+}
+
+
+.focus .select-plus-bg{
+	background-color: transparent !important;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 30;
+	width: 100vw;
+	height: 100vh;
 }
 
 .selected-options{
@@ -84,7 +103,7 @@ select.select-select{
 	border-radius: 0px 0px 10px 10px;
 	overflow: auto;
 }
-.select-plus.focus .select-options-container{
+.focus .select-plus-content .select-options-container{
 	display: block;
 	height: auto;
 }
