@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inputs</title>
+  
+
+	<style type="text/css">
+		*{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		body, html{
+			padding: 0;
+			margin: 0;
+		}
+    .box{
+      max-width: 500px;
+      margin: auto;
+    }
+		.form-place{
+			margin-top: 5px;
+			margin-bottom: 10px;
+			display: flex;
+			flex-direction: column;
+			gap: 3px;
+		}
+		.buttons{
+			margin: 30px auto;
+			text-align: center;
+		}
+		.btn{
+	    padding: 10px 15px;
+	    background-color: #ddd;
+	    border-radius: 10px;
+	    color: #000;
+	    text-decoration: none;
+			transition: .3s;
+		}
+		.btn:hover{
+			background-color: #aaa;
+		}
+	</style>
+</head>
+<body>
+  <div class="box">
+    <div class="form-place">
+      <label>CPF/CNPJ</label>
+      <input type="text" oninput="mask(this)" data-format="###.###.###-##||##.###.###/####-##" data-acepted-values="0123456789" placeholder="000.000.000-00 // 00.000.000/0000-00">
+    </div>
+
+    <div class="form-place">
+      <label>Máscara</label>
+      <input type="text" data-format="(##) # ####-####||(##) ####-####" oninput="mask(this)" placeholder="(00) 0000-0000 / (00) 9 0000-0000">
+    </div>
+
+    <div class="form-place">
+      <label>Máscara</label>
+      <input type="text" data-acepted-values="0123456789s/n" data-format="#######" oninput="mask(this)" placeholder="0000 // S/N" value="S/N">
+    </div>
+  
+    <div class="form-place">
+      <label>Placeholder Pertinente</label>
+      <input type="text" data-format="##:##:##" oninput="mask(this, true, 'MM:ss:mm')" placeholder="MM:ss:mm">
+      <small>Minutos : segundos : milissegundos</small>
+    </div>
+  </div>
+
+  <script src="./formPlus.js"></script>
+  <script src="./maskCpf.js"></script>
+</body>
+</html>
