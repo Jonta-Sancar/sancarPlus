@@ -2,7 +2,7 @@
 
 Opções de melhor apresentação para os selects
 
-[acessar](https://jonta-sancar.github.io/formPlus/)
+[acessar](https://jonta-sancar.github.io/sancarPlus/)
 * <a class="btn" download="selectPlus.css" href="./selectPlus.css">selectPlus.css</a>
 * <a class="btn" download="selectPlus.js" href="./selectPlus.js">selectPlus.js</a>
 
