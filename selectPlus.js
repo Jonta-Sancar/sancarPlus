@@ -1,4 +1,8 @@
-onload_functions.push(applyStructure);
+window.addEventListener('DOMContentLoaded', windowLoaded);
+
+function windowLoaded(){
+  applyStructure();
+}
 
 function applyStructure(){
   const selects = document.querySelectorAll('.select-select');
